@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'Widgets/OpenChatProfileWidgets.dart';
 
 const channelName = "test_Channel/custom";
 const methodChannel = MethodChannel(channelName);
@@ -17,6 +18,33 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: OpenChatProfilePage(),
     );
+  }
+}
+
+class SelectableProfileImages extends StatefulWidget {
+  const SelectableProfileImages({super.key});
+
+  @override
+  State<SelectableProfileImages> createState() =>
+      _SelectableProfileImagesState();
+}
+
+class _SelectableProfileImagesState extends State<SelectableProfileImages> {
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                SelectableProfileImage(
+                  imageName: "assets/profile_dog.png",
+                )
+              ],
+            )
+          ],
+        ));
   }
 }
 
@@ -39,6 +67,7 @@ class _SelectedProfileImageState extends State<SelectedProfileImage> {
           child: Image(
               width: 96,
               height: 96,
+              // todo: imageName에 따라서 이미지 바꾸기
               image: AssetImage("assets/profile_dog.png")),
         )
       ],
@@ -62,7 +91,8 @@ class OpenChatProfilePage extends StatelessWidget {
             bottom: false,
             child: OpenChatProfilePageHeader()),
         // SelectedProfile
-        SelectedProfileImage()
+        SelectedProfileImage(),
+        SelectableProfileImages()
       ],
     ));
   }
