@@ -30,21 +30,20 @@ class _SelectableProfileImageState extends State<SelectableProfileImage> {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
       ),
-      child: IconButton(
-        onPressed: onClicked,
-        padding: EdgeInsets.zero,
-        icon: Container(
-          width: 52,
-          height: 52,
-          child: Image(
+      child: Card(
+        shape: CircleBorder(
+          side: BorderSide(
+              width: isSelected ? 2 : 1,
+              color: isSelected ? Colors.blue : Colors.transparent),
+        ),
+        elevation: 0,
+        child: IconButton(
+          onPressed: onClicked,
+          padding: EdgeInsets.zero,
+          iconSize: 52,
+          icon: Image(
             image: AssetImage(widget.imageName),
           ),
-          decoration: ShapeDecoration(
-              shape: CircleBorder(
-                  side: BorderSide(
-            width: isSelected ? 2 : 1,
-            color: isSelected ? Colors.blue : Colors.transparent,
-          ))),
         ),
       ),
     );
